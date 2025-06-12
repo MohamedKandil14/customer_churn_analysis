@@ -1,0 +1,80 @@
+Telco Customer Churn Analysis Report
+1. Project Introduction
+This project aims to analyze telecommunication customer data to understand the key factors leading to customer churn (attrition). Additionally, it seeks to build a machine learning model to predict customers at risk of churning. Customer churn poses a significant challenge for telecom companies, and comprehending its root causes can aid in developing effective customer retention strategies and reducing associated costs.
+
+2. Data Used
+The Telco Customer Churn dataset was utilized for this project. It contains 7043 customer records and 21 columns of information, including:
+
+Demographic Information: Gender, SeniorCitizen, Partner (presence of a partner), Dependents (presence of dependents).
+Customer Services: PhoneService, MultipleLines, InternetService, OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport, StreamingTV, StreamingMovies.
+Account Information: Tenure (duration of subscription), Contract, PaperlessBilling, PaymentMethod, MonthlyCharges, TotalCharges.
+Target Variable: Churn (customer churn: Yes/No).
+3. Data Cleaning & Preprocessing
+Handling Missing Values:
+11 missing values were identified in the TotalCharges column. Given that this represents a small percentage of the data (approximately 0.15%), the affected rows were dropped. (Alternatively, these could have been imputed with the mean/median based on analysis choice).
+Data Type Conversion:
+The TotalCharges column was of object (text) type due to the presence of blank spaces. These blanks were converted to missing values (NaN), and then the column was converted to a numeric (float) type.
+The customerID column was dropped as it serves as a unique identifier and does not contribute to the analysis or modeling.
+Categorical Encoding:
+The target column Churn and the gender column were converted to numerical values (0 and 1).
+One-Hot Encoding was applied to other categorical columns with more than two options (e.g., InternetService, Contract, PaymentMethod) to transform them into a numerical format suitable for machine learning.
+4. Exploratory Data Analysis (EDA)
+A. Churn Distribution:
+
+The proportion of customers who churned was approximately X% (state the actual percentage calculated in EDA). This indicates that the dataset is imbalanced.
+B. Factors Influencing Churn:
+
+Internet Services: Customers without "Online Security" or "Tech Support" exhibited a significantly higher churn rate. Customers subscribing to Fiber optic internet service also showed a higher churn rate compared to DSL.
+Contract Type: Customers with "Month-to-month" contracts had a substantially higher churn rate compared to those with long-term contracts (one-year or two-year). This highlights the importance of loyalty programs and longer contracts.
+Payment Method: Customers using "Electronic check" as a payment method displayed a higher churn rate.
+Tenure: New customers (with short tenure) were more prone to churn. As tenure increased, the churn rate generally decreased.
+Monthly Charges: Customers with higher monthly charges tended to churn more frequently.
+Total Charges: Customers who paid lower total amounts were more likely to churn, reflecting a correlation with shorter tenure.
+5. Machine Learning Modeling
+A. Data Preparation for Modeling:
+
+The dataset was split into features (X) and the target variable (y - Churn).
+The data was further divided into training (80%) and testing (20%) sets using train_test_split with stratify=y to maintain the Churn class distribution in both sets.
+StandardScaler was applied to numerical variables (tenure, MonthlyCharges, TotalCharges) to standardize their scale, a crucial step for the Logistic Regression algorithm.
+B. Model Building:
+
+A Logistic Regression model was used. This is a simple, effective linear classification model often employed as a baseline.
+C. Model Evaluation:
+
+Accuracy: [State Value] - The overall correctness of the model's predictions.
+
+Precision (for Churn=1): [State Value] - Out of all predictions where the model said a customer would churn, how many were actually correct.
+
+Recall (for Churn=1): [State Value] - Out of all customers who actually churned, how many were successfully identified by the model.
+
+F1-Score (for Churn=1): [State Value] - A balanced measure of precision and recall.
+
+ROC AUC Score: [State Value] - Reflects the model's ability to distinguish between churning and non-churning customers. A score closer to 1 indicates better discrimination.
+
+Confusion Matrix: [Attach Image or Describe Results]
+
+(Example: X correct predictions for "No Churn" (True Negatives), Y incorrect predictions for "No Churn" (False Positives), Z incorrect predictions for "Churn" (False Negatives), W correct predictions for "Churn" (True Positives)).
+ROC Curve: [Attach Image] - Illustrates the trade-off between True Positive Rate and False Positive Rate.
+
+6. Insights and Recommendations
+Based on the exploratory analysis and model performance, the following recommendations can be provided to the telecom company:
+
+Loyalty Programs and Long-Term Contracts:
+The company should focus on migrating customers from month-to-month contracts to one or two-year contracts by offering attractive incentives.
+Launch loyalty programs for new customers to increase their initial retention period.
+Improve Service Quality and Technical Support:
+Prioritize improving "Online Security" and "Tech Support" services, as their absence is strongly correlated with churn.
+Investigate the reasons behind the high churn rate among "Fiber Optic" customers (e.g., potential quality or support issues).
+Review Billing and Payment Strategies:
+Analyze the reasons for the high churn rate among "Electronic check" users and offer alternative solutions or educate customers about other payment methods.
+Review pricing plans for customers with high monthly charges to identify opportunities for providing better value or targeted discounts.
+New Customer Retention Programs:
+Identify customers early in their tenure and offer personalized deals or additional support to prevent early churn.
+7. Conclusion
+This project provided a comprehensive analysis of customer churn data, revealing key factors influencing customer decisions to stay or leave. The predictive model can assist the company in proactively identifying at-risk customers, enabling targeted retention interventions.
+
+8. Future Work
+Experiment with more complex machine learning algorithms (e.g., RandomForest, XGBoost) to potentially improve prediction accuracy.
+Address the imbalanced data problem using techniques such as SMOTE or oversampling/undersampling.
+Conduct feature importance analysis to understand which columns have the most significant impact on churn prediction.
+Build an interactive dashboard using tools like Power BI, Tableau, or Dash (Python) to visualize insights.
