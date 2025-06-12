@@ -73,8 +73,3 @@ Identify customers early in their tenure and offer personalized deals or additio
 7. Conclusion
 This project provided a comprehensive analysis of customer churn data, revealing key factors influencing customer decisions to stay or leave. The predictive model can assist the company in proactively identifying at-risk customers, enabling targeted retention interventions.
 
-8. Future Work
-Experiment with more complex machine learning algorithms (e.g., RandomForest, XGBoost) to potentially improve prediction accuracy.
-Address the imbalanced data problem using techniques such as SMOTE or oversampling/undersampling.
-Conduct feature importance analysis to understand which columns have the most significant impact on churn prediction.
-Build an interactive dashboard using tools like Power BI, Tableau, or Dash (Python) to visualize insights.
